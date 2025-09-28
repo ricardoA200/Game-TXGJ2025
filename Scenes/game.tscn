@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://hrohhh27gv2c"]
+[gd_scene load_steps=10 format=3 uid="uid://hrohhh27gv2c"]
 
 [ext_resource type="Script" uid="uid://c3a07xu47iuej" path="res://Scenes/game.gd" id="1_3dryh"]
 [ext_resource type="Texture2D" uid="uid://dm33ws8rmy8it" path="res://Assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_qxrlw"]
 [ext_resource type="Texture2D" uid="uid://caacsa4kl36pi" path="res://Assets/jurassicBG.png" id="3_wowpa"]
 [ext_resource type="PackedScene" uid="uid://durf4fw0iv0bu" path="res://Entities/Player.tscn" id="3_wrm1d"]
 [ext_resource type="Texture2D" uid="uid://cqeslbh046eip" path="res://Assets/goldstar.png" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://ctfvccex05bsg" path="res://Scenes/sun_enemy.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://bws1rdodhonjm" path="res://Scenes/moon_enemy.tscn" id="7_1l0tm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ryrav"]
 texture = ExtResource("1_qxrlw")
@@ -122,3 +124,11 @@ texture = ExtResource("5_wowpa")
 
 [node name="Player" parent="." instance=ExtResource("3_wrm1d")]
 position = Vector2(-2265, -78)
+
+[node name="SunEnemy" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(-2485, -42)
+collision_mask = 9
+
+[node name="MoonEnemy" parent="." instance=ExtResource("7_1l0tm")]
+position = Vector2(-2045, -50)
+collision_mask = 9
