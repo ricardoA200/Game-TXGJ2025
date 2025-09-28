@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sm2l7v667vo4"
-path="res://.godot/imported/egyptwalk.png-6b969d650a0c3a722219c833d55f2de2.ctex"
+uid="uid://caacsa4kl36pi"
+path="res://.godot/imported/jurassicBG.png-2001881bb56acac0e82e4dee894a0406.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/egyptwalkNB/egyptwalk.png"
-dest_files=["res://.godot/imported/egyptwalk.png-6b969d650a0c3a722219c833d55f2de2.ctex"]
+source_file="res://Assets/jurassicBG.png"
+dest_files=["res://.godot/imported/jurassicBG.png-2001881bb56acac0e82e4dee894a0406.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sm2l7v667vo4"
-path="res://.godot/imported/egyptwalk.png-6b969d650a0c3a722219c833d55f2de2.ctex"
+uid="uid://c72ajdumpstrl"
+path="res://.godot/imported/16-bit-spike-Sheet.png-03c98325b111fb51e745a103bbc3d71e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/egyptwalkNB/egyptwalk.png"
-dest_files=["res://.godot/imported/egyptwalk.png-6b969d650a0c3a722219c833d55f2de2.ctex"]
+source_file="res://Assets/16-bit-spike-Sheet.png"
+dest_files=["res://.godot/imported/16-bit-spike-Sheet.png-03c98325b111fb51e745a103bbc3d71e.ctex"]
 
 [params]
 

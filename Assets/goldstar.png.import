@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sm2l7v667vo4"
-path="res://.godot/imported/egyptwalk.png-6b969d650a0c3a722219c833d55f2de2.ctex"
+uid="uid://cqeslbh046eip"
+path="res://.godot/imported/goldstar.png-51fa03a62334cb26ee62c21388952416.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/egyptwalkNB/egyptwalk.png"
-dest_files=["res://.godot/imported/egyptwalk.png-6b969d650a0c3a722219c833d55f2de2.ctex"]
+source_file="res://Assets/goldstar.png"
+dest_files=["res://.godot/imported/goldstar.png-51fa03a62334cb26ee62c21388952416.ctex"]
 
 [params]
 
