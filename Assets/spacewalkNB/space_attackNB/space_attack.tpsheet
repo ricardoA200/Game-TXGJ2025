@@ -1,0 +1,48 @@
+{
+	"textures": [
+		{
+			"image": "space_attack.png",
+			"size": {
+				"w": 564,
+				"h": 292
+			},
+			"sprites": [
+				{
+					"filename": "a1-removebg-preview.png",
+					"region": {
+						"x": 1,
+						"y": 1,
+						"w": 256,
+						"h": 290
+					},
+					"margin": {
+						"x": 21,
+						"y": 146,
+						"w": 244,
+						"h": 210
+					}
+				},
+				{
+					"filename": "a2-removebg-preview.png",
+					"region": {
+						"x": 259,
+						"y": 1,
+						"w": 304,
+						"h": 289
+					},
+					"margin": {
+						"x": 20,
+						"y": 144,
+						"w": 196,
+						"h": 211
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:444a045d3694c0a6428efaaf0d967c03:b7e117e40736fe79927b2844bf1ab3f1:5b1ef3c1c563e4d61cb568907b04b1b8$"
+	}
+}

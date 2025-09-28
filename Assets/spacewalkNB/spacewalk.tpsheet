@@ -1,0 +1,93 @@
+{
+	"textures": [
+		{
+			"image": "spacewalk.png",
+			"size": {
+				"w": 223,
+				"h": 874
+			},
+			"sprites": [
+				{
+					"filename": "s2-removebg-preview.png",
+					"region": {
+						"x": 1,
+						"y": 1,
+						"w": 221,
+						"h": 289
+					},
+					"margin": {
+						"x": 10,
+						"y": 144,
+						"w": 279,
+						"h": 211
+					}
+				},
+				{
+					"filename": "s4-removebg-preview.png",
+					"region": {
+						"x": 1,
+						"y": 1,
+						"w": 221,
+						"h": 289
+					},
+					"margin": {
+						"x": 10,
+						"y": 144,
+						"w": 279,
+						"h": 211
+					}
+				},
+				{
+					"filename": "s1-removebg-preview.png",
+					"region": {
+						"x": 1,
+						"y": 292,
+						"w": 211,
+						"h": 290
+					},
+					"margin": {
+						"x": 21,
+						"y": 146,
+						"w": 289,
+						"h": 210
+					}
+				},
+				{
+					"filename": "s5-removebg-preview.png",
+					"region": {
+						"x": 1,
+						"y": 292,
+						"w": 211,
+						"h": 290
+					},
+					"margin": {
+						"x": 21,
+						"y": 146,
+						"w": 289,
+						"h": 210
+					}
+				},
+				{
+					"filename": "s3-removebg-preview.png",
+					"region": {
+						"x": 1,
+						"y": 584,
+						"w": 209,
+						"h": 289
+					},
+					"margin": {
+						"x": 22,
+						"y": 144,
+						"w": 291,
+						"h": 211
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:8028bb7b2e066f5af3c264ac267ddd39:ad40d2d1fcc40bcbb3563c3ce3554ec6:36048bd1a5697ce35b79ebdef322cb97$"
+	}
+}

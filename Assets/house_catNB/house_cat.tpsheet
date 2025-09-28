@@ -1,0 +1,48 @@
+{
+	"textures": [
+		{
+			"image": "house_cat.png",
+			"size": {
+				"w": 551,
+				"h": 251
+			},
+			"sprites": [
+				{
+					"filename": "h1-removebg-preview.png",
+					"region": {
+						"x": 1,
+						"y": 1,
+						"w": 266,
+						"h": 249
+					},
+					"margin": {
+						"x": 108,
+						"y": 128,
+						"w": 311,
+						"h": 184
+					}
+				},
+				{
+					"filename": "h2-removebg-preview.png",
+					"region": {
+						"x": 269,
+						"y": 1,
+						"w": 281,
+						"h": 243
+					},
+					"margin": {
+						"x": 108,
+						"y": 137,
+						"w": 296,
+						"h": 190
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:02970e5ac92566a5eec1ffbd700e43fa:a580713f36ad61375722381bfbcf5fa4:c167235542b401b7c844e540665cfe0d$"
+	}
+}
