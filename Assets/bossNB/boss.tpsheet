@@ -1,0 +1,78 @@
+{
+	"textures": [
+		{
+			"image": "boss.png",
+			"size": {
+				"w": 670,
+				"h": 357
+			},
+			"sprites": [
+				{
+					"filename": "b4-removebg-preview.png",
+					"region": {
+						"x": 1,
+						"y": 1,
+						"w": 283,
+						"h": 355
+					},
+					"margin": {
+						"x": 18,
+						"y": 35,
+						"w": 294,
+						"h": 78
+					}
+				},
+				{
+					"filename": "b1-removebg-preview.png",
+					"region": {
+						"x": 286,
+						"y": 1,
+						"w": 199,
+						"h": 355
+					},
+					"margin": {
+						"x": 144,
+						"y": 35,
+						"w": 378,
+						"h": 78
+					}
+				},
+				{
+					"filename": "b3-removebg-preview.png",
+					"region": {
+						"x": 286,
+						"y": 1,
+						"w": 199,
+						"h": 355
+					},
+					"margin": {
+						"x": 144,
+						"y": 35,
+						"w": 378,
+						"h": 78
+					}
+				},
+				{
+					"filename": "b2-removebg-preview.png",
+					"region": {
+						"x": 487,
+						"y": 1,
+						"w": 182,
+						"h": 348
+					},
+					"margin": {
+						"x": 138,
+						"y": 36,
+						"w": 395,
+						"h": 85
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:0b2890dcdaf8900fd297662bf59d5a70:8ced7f69ac61ca69f168c3f74a959544:fa2c2b8149d4fb0085fa4f5b7b924d6d$"
+	}
+}
