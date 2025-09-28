@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cqeslbh046eip" path="res://Assets/goldstar.png" id="5_wowpa"]
 [ext_resource type="Texture2D" uid="uid://cokwt8vccvomt" path="res://Assets/egyptwalkNB/spear_throw/spear_throw.png" id="6_i6g32"]
 [ext_resource type="Texture2D" uid="uid://dbmk6bo60mqf7" path="res://Assets/oogawalkNB.sprites/ooga1-removebg-preview.tres" id="7_1l0tm"]
-[ext_resource type="Texture2D" uid="uid://c13ym1cjahjgp" path="res://Assets/clock-removebg-preview.png" id="9_h4fw4"]
-[ext_resource type="AudioStream" uid="uid://copvalkfikn84" path="res://Assets/BeepBox-Song.wav" id="10_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://bxo8g50w8keak" path="res://Assets/clock-removebg-preview.png" id="9_h4fw4"]
+[ext_resource type="AudioStream" uid="uid://ccor10h0kx1pa" path="res://Assets/BeepBox-Song.wav" id="10_ldgsr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4fw4"]
 texture = ExtResource("2_v158k")
@@ -105,11 +105,11 @@ physics_layer_0/collision_mask = 8
 sources/1 = SubResource("TileSetAtlasSource_ryrav")
 sources/0 = SubResource("TileSetAtlasSource_h4fw4")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v158k"]
-size = Vector2(620.75, 41)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldgsr"]
-size = Vector2(82, 79)
+size = Vector2(79, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v158k"]
+size = Vector2(620.75, 44.5)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_3dryh")
@@ -127,7 +127,7 @@ motion_scale = Vector2(0.5, 0.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 show_behind_parent = true
-position = Vector2(-834, -772)
+position = Vector2(-863, -772)
 scale = Vector2(8.558823, 8.1558075)
 texture = ExtResource("3_wowpa")
 
@@ -157,27 +157,29 @@ position = Vector2(-985.47943, 8)
 scale = Vector2(-0.22112851, 0.19379078)
 texture = ExtResource("7_1l0tm")
 
-[node name="Lava" type="Area2D" parent="."]
+[node name="DoorArea" type="Area2D" parent="."]
 collision_layer = 8
 
-[node name="LavaArea" type="CollisionShape2D" parent="Lava"]
-position = Vector2(-18.375, 190.5)
-shape = SubResource("RectangleShape2D_v158k")
-
-[node name="DoorArea" type="Area2D" parent="."]
-
 [node name="door" type="Sprite2D" parent="DoorArea"]
-position = Vector2(33, -902)
+position = Vector2(9, -898.99994)
 scale = Vector2(0.22475003, 0.15875006)
 texture = ExtResource("9_h4fw4")
 
-[node name="nextLevel" type="CollisionShape2D" parent="DoorArea"]
-position = Vector2(34, -901.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorArea"]
+position = Vector2(8.5, -901)
 shape = SubResource("RectangleShape2D_ldgsr")
+
+[node name="Lava" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="LavaCollider" type="CollisionShape2D" parent="Lava"]
+position = Vector2(-20, 192.75)
+shape = SubResource("RectangleShape2D_v158k")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_ldgsr")
 volume_db = 0.954
 autoplay = true
 
+[connection signal="body_entered" from="DoorArea" to="." method="_on_door_body_entered"]
 [connection signal="body_entered" from="Lava" to="." method="_on_lava_body_entered"]
