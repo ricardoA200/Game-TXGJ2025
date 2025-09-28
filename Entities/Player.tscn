@@ -1,7 +1,5 @@
-[gd_scene load_steps=26 format=3 uid="uid://durf4fw0iv0bu"]
+[gd_scene load_steps=24 format=3 uid="uid://durf4fw0iv0bu"]
 
-[ext_resource type="Texture2D" uid="uid://dmmomt5caensf" path="res://Assets/image2.png" id="1_rpqav"]
-[ext_resource type="Texture2D" uid="uid://ddlohwg4r3uds" path="res://Assets/image.png" id="2_1iada"]
 [ext_resource type="Texture2D" uid="uid://bwbtqkpgb1yej" path="res://Assets/oogawalkNB.sprites/oogawalkNB.png" id="2_2a4id"]
 [ext_resource type="Texture2D" uid="uid://r4xsw1gbcaka" path="res://Assets/catwalknb_sheet.sprites/catwalknb_sheet.png" id="3_2a4id"]
 [ext_resource type="Texture2D" uid="uid://sm2l7v667vo4" path="res://Assets/egyptwalkNB/egyptwalk.png" id="5_drum4"]
@@ -17,8 +15,8 @@ signal health_change # Will need to be emitted when player takes damage  or heal
 @export var maxHealth = 100
 @onready var current_health: int = 100
 
-@onready var cavemanSprite = $caveSprite
-@onready var spearmanSprite = $spearSprite
+@onready var cavemanSprite = $caveAnims
+@onready var spearmanSprite = $egyptAnims
 @onready var attackHitBox = $AttackArea01/AttackHitBox
 @onready var playerHitBox = $HitBox
 @onready var spearProj = load(\"res://Scenes/spear_projectile.tscn\")
@@ -234,7 +232,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_mwl8m")
 }],
 "loop": true,
-"name": &"default",
+"name": &"walk_right",
 "speed": 5.0
 }]
 
@@ -277,7 +275,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ph751")
 }],
 "loop": true,
-"name": &"default",
+"name": &"walk_right",
 "speed": 5.0
 }]
 
@@ -299,10 +297,6 @@ position = Vector2(12, -2)
 scale = Vector2(1.2, 1.2)
 shape = SubResource("CapsuleShape2D_kyqiw")
 
-[node name="spearSprite" type="Sprite2D" parent="."]
-
-texture = ExtResource("2_1iada")
-
 [node name="CatWalk" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(1.9073486e-06, 4.500002)
@@ -311,20 +305,22 @@ sprite_frames = SubResource("SpriteFrames_cfvty")
 autoplay = "default"
 frame_progress = 0.9492314
 
-[node name="OogaWalk" type="AnimatedSprite2D" parent="."]
-position = Vector2(2.0000002, 9)
-scale = Vector2(0.6210046, 0.6360544)
+[node name="caveAnims" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, -4)
+scale = Vector2(0.4, 0.41)
 sprite_frames = SubResource("SpriteFrames_8td47")
-autoplay = "default"
-frame_progress = 0.5926923
+animation = &"walk_right"
+autoplay = "walk_right"
+frame_progress = 0.10587724
 
-[node name="EgyptWalk" type="AnimatedSprite2D" parent="."]
+[node name="egyptAnims" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(1, 4)
 scale = Vector2(0.597285, 0.6357388)
 sprite_frames = SubResource("SpriteFrames_k5has")
-autoplay = "default"
-frame_progress = 0.13964522
+animation = &"walk_right"
+autoplay = "walk_right"
+frame_progress = 0.16031078
 
 [node name="AttackArea01" type="Area2D" parent="."]
 position = Vector2(14.999999, -27.999998)
