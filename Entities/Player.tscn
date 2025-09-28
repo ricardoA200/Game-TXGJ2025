@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://durf4fw0iv0bu"]
+[gd_scene load_steps=22 format=3 uid="uid://durf4fw0iv0bu"]
 
 [ext_resource type="Texture2D" uid="uid://bwbtqkpgb1yej" path="res://Assets/oogawalkNB.sprites/oogawalkNB.png" id="2_2a4id"]
 [ext_resource type="Texture2D" uid="uid://r4xsw1gbcaka" path="res://Assets/catwalknb_sheet.sprites/catwalknb_sheet.png" id="3_2a4id"]
@@ -154,8 +154,8 @@ func updateForm():
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyqiw"]
-radius = 36.666664
-height = 100.0
+radius = 20.0
+height = 86.666664
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_io258"]
 atlas = ExtResource("3_2a4id")
@@ -200,36 +200,25 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hmggr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2a4id"]
 atlas = ExtResource("2_2a4id")
-region = Rect2(5, 0, 219, 294)
+region = Rect2(3, 292, 220, 305)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1v5ml"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_drum4"]
 atlas = ExtResource("2_2a4id")
-region = Rect2(224, 0, 219, 294)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yytyf"]
-atlas = ExtResource("2_2a4id")
-region = Rect2(5, 302, 219, 294)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mwl8m"]
-atlas = ExtResource("2_2a4id")
-region = Rect2(224, 302, 219, 294)
+region = Rect2(0, 0, 227, 291)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8td47"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hmggr")
+"texture": SubResource("AtlasTexture_2a4id")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1v5ml")
+"texture": SubResource("AtlasTexture_drum4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yytyf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mwl8m")
+"texture": SubResource("AtlasTexture_2a4id")
 }],
 "loop": true,
 "name": &"walk_right",
@@ -239,6 +228,10 @@ animations = [{
 [sub_resource type="AtlasTexture" id="AtlasTexture_opvli"]
 atlas = ExtResource("5_drum4")
 region = Rect2(0, 0, 221, 291)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ph751"]
+atlas = ExtResource("5_drum4")
+region = Rect2(0, 1164, 221, 291)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a0vkg"]
 atlas = ExtResource("5_drum4")
@@ -252,15 +245,14 @@ region = Rect2(0, 582, 221, 291)
 atlas = ExtResource("5_drum4")
 region = Rect2(0, 873, 221, 291)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ph751"]
-atlas = ExtResource("5_drum4")
-region = Rect2(0, 1164, 221, 291)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_k5has"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_opvli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ph751")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a0vkg")
@@ -269,10 +261,10 @@ animations = [{
 "texture": SubResource("AtlasTexture_rtjgs")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h7dcw")
+"texture": SubResource("AtlasTexture_a0vkg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ph751")
+"texture": SubResource("AtlasTexture_h7dcw")
 }],
 "loop": true,
 "name": &"walk_right",
@@ -293,7 +285,7 @@ scale = Vector2(0.5, 0.5)
 zoom = Vector2(1.5, 1.5)
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
-position = Vector2(12, -2)
+position = Vector2(22, -12)
 scale = Vector2(1.2, 1.2)
 shape = SubResource("CapsuleShape2D_kyqiw")
 
@@ -306,21 +298,21 @@ autoplay = "default"
 frame_progress = 0.9492314
 
 [node name="caveAnims" type="AnimatedSprite2D" parent="."]
-position = Vector2(6, -4)
+position = Vector2(6, -6)
 scale = Vector2(0.4, 0.41)
 sprite_frames = SubResource("SpriteFrames_8td47")
 animation = &"walk_right"
 autoplay = "walk_right"
-frame_progress = 0.10587724
+frame = 2
+frame_progress = 0.12389939
 
 [node name="egyptAnims" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(1, 4)
-scale = Vector2(0.597285, 0.6357388)
+position = Vector2(6.0000005, -9.999999)
+scale = Vector2(0.38518098, 0.3954038)
 sprite_frames = SubResource("SpriteFrames_k5has")
 animation = &"walk_right"
 autoplay = "walk_right"
-frame_progress = 0.16031078
+frame_progress = 0.52685076
 
 [node name="AttackArea01" type="Area2D" parent="."]
 position = Vector2(14.999999, -27.999998)
