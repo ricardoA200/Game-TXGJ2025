@@ -161,6 +161,7 @@ size = Vector2(107, 141)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
+collision_mask = 9
 script = SubResource("GDScript_kyqiw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
