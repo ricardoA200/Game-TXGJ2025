@@ -1,0 +1,132 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0hu1viir2oa1"]
+
+[ext_resource type="Texture2D" uid="uid://b5gy7oggpkug3" path="res://Assets/weaponclub-removebg-preview.png" id="2_t181h"]
+
+[sub_resource type="GDScript" id="GDScript_mtn7u"]
+script/source = "# Weapon.gd
+extends Area2D
+
+@export var damage: int = 8
+@export var attack_cooldown: float = 0.35   # time between allowed attacks
+@export var attack_active_time: float = 0.12 # how long collider is active (in seconds)
+@export var knockback_strength: float = 220.0
+@export var knockback_vertical: float = -80.0
+@export var single_hit_per_target: bool = true
+
+# Optional node paths (set in editor or via onready)
+@export var sprite_path: NodePath
+@export var colshape_path: NodePath
+@export var anim_path: NodePath
+@export var swing_sound_path: NodePath
+@export var hit_sound_path: NodePath
+
+
+@onready var _sprite: Sprite2D = get_node_or_null(sprite_path) if sprite_path != NodePath(\"\") else $Sprite2D
+@onready var _colshape: CollisionShape2D = get_node_or_null(colshape_path) if colshape_path != NodePath(\"\") else $CollisionShape2D
+@onready var _anim: AnimationPlayer = get_node_or_null(anim_path) if anim_path != NodePath(\"\") else $AnimationPlayer
+@onready var _swing_sound: AudioStreamPlayer2D = get_node_or_null(swing_sound_path) if swing_sound_path != NodePath(\"\") else $SwingSound
+@onready var _hit_sound: AudioStreamPlayer2D = get_node_or_null(hit_sound_path) if hit_sound_path != NodePath(\"\") else $HitSound
+
+
+
+var _can_attack: bool = true
+var _attacking: bool = false
+var _already_hit := {} # track instance_ids hit during current attack
+
+func _ready():
+	# ensure collision shape starts disabled
+	if _colshape:
+		_colshape.disabled = true
+	# connect body entered to detect hits
+	connect(\"body_entered\", Callable(self, \"_on_body_entered\"))
+
+func attack(direction: Vector2 = Vector2.RIGHT) -> void:
+	\"\"\"
+	Call this to perform an attack. `direction` is used for knockback direction (unit).
+	\"\"\"
+	if not _can_attack:
+		return
+	_can_attack = false
+	_attacking = true
+	_already_hit.clear()
+
+	# play swing animation & sound if available
+	if _anim:
+		_anim.play(\"swing\")
+	if _swing_sound:
+		_swing_sound.play()
+
+	# enable collider for a short window
+	if _colshape:
+		_colshape.disabled = false
+
+	# Wait for active window
+	await get_tree().create_timer(attack_active_time).timeout
+
+	# disable collider
+	if _colshape:
+		_colshape.disabled = true
+
+	_attacking = false
+
+	# start cooldown
+	await get_tree().create_timer(attack_cooldown).timeout
+	_can_attack = true
+
+func _on_body_entered(body: Node) -> void:
+	# Only damage while in an active attack window
+	if not _attacking:
+		return
+
+	# Avoid hitting same instance multiple times in one swing
+	var id = body.get_instance_id()
+	if single_hit_per_target and _already_hit.has(id):
+		return
+
+	# Deal damage if the target has apply_damage(amount) method
+	if body.has_method(\"apply_damage\"):
+		body.apply_damage(damage)
+		_already_hit[id] = true
+		if _hit_sound:
+			_hit_sound.play()
+
+		# Try to apply knockback:
+		# Prefer calling a target method apply_knockback(vec) if it exists.
+		var source_global_pos = global_position
+		var dir = (body.global_position - source_global_pos).normalized()
+		var kb = dir * knockback_strength + Vector2(0, knockback_vertical)
+
+		if body.has_method(\"apply_knockback\"):
+			body.apply_knockback(kb)
+		else:
+			# fallback: if body is CharacterBody2D, try to set velocity (best-effort)
+			if body is CharacterBody2D:
+				# This tries to push the target briefly
+				if body.has_variable(\"velocity\"):
+					body.velocity += kb
+				elif body.has_method(\"set_velocity\"):
+					body.set_velocity(body.get(\"velocity\") + kb)
+
+# Optional: helper to visually show when weapon can attack (debug)
+func can_attack() -> bool:
+	return _can_attack
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oustq"]
+radius = 49.0
+height = 230.80563
+
+[node name="weapon_club" type="Area2D"]
+position = Vector2(1, -2)
+script = SubResource("GDScript_mtn7u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_t181h")
+offset = Vector2(60, -86)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(85.99999, -96)
+rotation = 0.68029505
+shape = SubResource("CapsuleShape2D_oustq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
