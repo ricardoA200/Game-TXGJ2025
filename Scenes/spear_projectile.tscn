@@ -8,7 +8,7 @@ radius = 1.9999976
 height = 17.999977
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1ujx"]
-size = Vector2(57, 7)
+size = Vector2(65.5, 7)
 
 [node name="SpearProjectile" type="CharacterBody2D"]
 collision_layer = 16
@@ -16,17 +16,17 @@ collision_mask = 8
 script = ExtResource("1_4pggk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(5, -1.9999998)
+position = Vector2(9.570211, -1.6735575)
 rotation = 2.353333
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.11168312, 0.11355871)
 texture = ExtResource("2_wci7m")
 
 [node name="AirHitBox" type="CollisionShape2D" parent="."]
-position = Vector2(18.000002, -2)
+position = Vector2(25.000002, -2)
 rotation = 1.5692348
 shape = SubResource("CapsuleShape2D_1k74f")
 
 [node name="StuckHitBox" type="CollisionShape2D" parent="."]
-position = Vector2(5, -2)
+position = Vector2(9.25, -2)
 shape = SubResource("RectangleShape2D_h1ujx")
 disabled = true
