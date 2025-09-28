@@ -1,0 +1,108 @@
+{
+	"textures": [
+		{
+			"image": "knightwalkNB.png",
+			"size": {
+				"w": 1556,
+				"h": 293
+			},
+			"sprites": [
+				{
+					"filename": "k1-removebg-preview.png",
+					"region": {
+						"x": 1,
+						"y": 1,
+						"w": 258,
+						"h": 291
+					},
+					"margin": {
+						"x": 20,
+						"y": 145,
+						"w": 242,
+						"h": 209
+					}
+				},
+				{
+					"filename": "k5-removebg-preview.png",
+					"region": {
+						"x": 261,
+						"y": 1,
+						"w": 254,
+						"h": 291
+					},
+					"margin": {
+						"x": 20,
+						"y": 145,
+						"w": 246,
+						"h": 209
+					}
+				},
+				{
+					"filename": "k_attack-removebg-preview.png",
+					"region": {
+						"x": 517,
+						"y": 1,
+						"w": 251,
+						"h": 291
+					},
+					"margin": {
+						"x": 20,
+						"y": 145,
+						"w": 249,
+						"h": 209
+					}
+				},
+				{
+					"filename": "k2-removebg-preview.png",
+					"region": {
+						"x": 770,
+						"y": 1,
+						"w": 268,
+						"h": 290
+					},
+					"margin": {
+						"x": 9,
+						"y": 144,
+						"w": 232,
+						"h": 210
+					}
+				},
+				{
+					"filename": "k4-removebg-preview.png",
+					"region": {
+						"x": 1040,
+						"y": 1,
+						"w": 265,
+						"h": 290
+					},
+					"margin": {
+						"x": 9,
+						"y": 144,
+						"w": 235,
+						"h": 210
+					}
+				},
+				{
+					"filename": "k3-removebg-preview.png",
+					"region": {
+						"x": 1307,
+						"y": 1,
+						"w": 248,
+						"h": 290
+					},
+					"margin": {
+						"x": 20,
+						"y": 144,
+						"w": 252,
+						"h": 210
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:765bab44229629e7356813327f2ab963:a53fbdd9eb751fb40cffe21a0402d12e:f19f032083b929a760d31f668d3d6ddb$"
+	}
+}
