@@ -20,7 +20,7 @@ value = 40.0
 texture_over = ExtResource("2_bjfho")
 texture_progress = ExtResource("1_fccik")
 
-[node name="Dash Icon" type="Sprite2D" parent="."]
+[node name="DashIcon" type="Sprite2D" parent="."]
 position = Vector2(46.000004, 604)
 scale = Vector2(0.0738043, 0.070514515)
 texture = ExtResource("4_6fbih")
