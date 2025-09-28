@@ -20,6 +20,7 @@ signal health_change # Will need to be emitted when player takes damage  or heal
 @onready var attackHitBox = $AttackArea01/AttackHitBox
 @onready var playerHitBox = $HitBox
 @onready var spearProj = load(\"res://Scenes/spear_projectile.tscn\")
+@onready var weaponclub = load(\"res://Scenes/weaponclub.tscn\")
 
 @onready var world = get_parent()
 
@@ -151,6 +152,18 @@ func updateForm():
 		cavemanSprite.visible = false
 		spearmanSprite.visible = true
 		jumps = 1
+		
+# In Player.gd
+@onready var _sprite: AnimatedSprite2D = $caveAnims # or whichever Sprite2D is your caveman
+@export var weapon_scene: PackedScene        # lets you assign the club in the editor
+var weapon_club                              # will hold the actual club instance
+
+func _ready():
+# Instance the weapon
+	if weapon_scene:
+		weapon_club = weapon_scene.instantiate()
+		add_child(weapon_club)  # put it inside the Player
+		weapon_club.position = Vector2(0, 0)  # adjust where it attaches to caveman’s hand
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyqiw"]
