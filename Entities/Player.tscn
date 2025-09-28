@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://durf4fw0iv0bu"]
+[gd_scene load_steps=36 format=3 uid="uid://durf4fw0iv0bu"]
 
 [ext_resource type="Texture2D" uid="uid://bwbtqkpgb1yej" path="res://Assets/oogawalkNB.sprites/oogawalkNB.png" id="2_2a4id"]
 [ext_resource type="Texture2D" uid="uid://cub3rk1g0cclk" path="res://Assets/oogawalkNB.sprites/received_819653130734038-removebg-preview.png" id="2_w6hej"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://1yv6v0n0nc87" path="res://Assets/egyptwalkNB/spear_throw/spear3-removebg-preview.png" id="5_nn0oq"]
 [ext_resource type="Texture2D" uid="uid://cp3pc2rjqe5p5" path="res://Assets/egyptwalkNB/spear_throw/spear4-removebg-preview.png" id="6_ry37w"]
 [ext_resource type="Texture2D" uid="uid://cy0j2mfiqvt8" path="res://Assets/knightwalkNB/knightwalkNB.png" id="8_nn0oq"]
+[ext_resource type="Texture2D" uid="uid://c3s1if1triy5s" path="res://Assets/spacewalkNB/spacewalk.png" id="9_nn0oq"]
 
 [sub_resource type="GDScript" id="GDScript_kyqiw"]
 resource_name = "Player "
@@ -25,6 +26,8 @@ signal spearThrown
 @onready var currentSprite : AnimatedSprite2D = $caveAnims
 @onready var cavemanSprite = $caveAnims
 @onready var spearmanSprite = $egyptAnims
+@onready var knightSprite = $knightAnims
+@onready var spaceSprite = $spaceAnims
 @onready var attackHitBox = $AttackArea01/AttackHitBox
 @onready var playerHitBox = $HitBox
 @onready var spearProj = load(\"res://Scenes/spear_projectile.tscn\")
@@ -45,8 +48,8 @@ var dashSpeed := 1
 var form := \"Caveman\"
 
 
-#func _ready():
-	
+func _ready():
+	reset()
 var can_take_damage: bool = true
 var spear_instance : Node = null
 
@@ -58,11 +61,12 @@ func _physics_process(delta):
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed(\"jump\") and (is_on_floor() or form == \"Caveman\") and (jumps > jumped):
+	if Input.is_action_just_pressed(\"jump\") and (jumps > jumped):
 		velocity.y = JUMP_VELOCITY
 		jumped += 1
 	elif is_on_floor():
 		jumped = 0
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis(\"ui_left\", \"ui_right\")
@@ -77,7 +81,14 @@ func _physics_process(delta):
 func _process(delta):
 	handleInputs()
 	animationHandler()
-
+	if form == \"Caveman\":
+		jumps = 2
+	else:
+		jumps = 1
+func reset():
+	current_health = 100
+	health_change.emit(current_health)
+	
 func attack(): # TO DO: Program Monster to take damage from attackHitBox 
 	attackHitBox.disabled = false
 	await get_tree().create_timer(0.5).timeout
@@ -122,19 +133,34 @@ func take_damage(amount: int):
 	# start cooldown
 	var timer = get_tree().create_timer(1.0) # 1 second delay
 	timer.timeout.connect(_on_damage_cooldown_finished)
-	health_change.emit()
 	pass
 	
 func _on_damage_cooldown_finished():
 		can_take_damage = true
 	
 func handleInputs():
-	
+	if Input.is_action_just_pressed(\"formOne\"):
+		form = \"Caveman\"
+		updateForm()
+	if Input.is_action_just_pressed(\"formTwo\"):
+		form = \"Spearman\"
+		updateForm()
+	if Input.is_action_just_pressed(\"formThree\"):
+		form = \"Knight\"
+		updateForm()
+	if Input.is_action_just_pressed(\"formFour\"):
+		form = \"Spaceman\"
+		updateForm()
+		
 	if Input.is_action_just_pressed(\"formSwitch\"):
-		if form == \"Spearman\":
-			form = \"Caveman\"
-		elif form == \"Caveman\":
+		if form == \"Caveman\":
 			form = \"Spearman\"
+		elif form == \"Spearman\":
+			form = \"Knight\"
+		elif form == \"Knight\":
+			form = \"Spaceman\"
+		elif form == \"Spaceman\":
+			form = \"Caveman\"
 		updateForm()
 
 	if Input.is_action_just_pressed(\"attack\"):
@@ -160,13 +186,33 @@ func updateForm():
 	if form == \"Caveman\":
 		currentSprite = cavemanSprite
 		cavemanSprite.visible = true
+		knightSprite.visible = false
+		spaceSprite.visible = false
 		spearmanSprite.visible = false
-		jumps = 2
+		
 	elif form == \"Spearman\" or throwing:
 		currentSprite = spearmanSprite
 		cavemanSprite.visible = false
+		knightSprite.visible = false
+		spaceSprite.visible = false
 		spearmanSprite.visible = true
-		jumps = 1
+		
+	elif form == \"Knight\":
+		currentSprite = knightSprite
+		cavemanSprite.visible = false
+		knightSprite.visible = true
+		spaceSprite.visible = false
+		spearmanSprite.visible = false
+		
+	elif form == \"Spaceman\":
+		currentSprite = spaceSprite
+		cavemanSprite.visible = false
+		knightSprite.visible = false
+		spaceSprite.visible = true
+		spearmanSprite.visible = false
+		
+
+	
 
 func animationHandler():
 	if throwing:
@@ -433,7 +479,45 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox0q5"]
+atlas = ExtResource("9_nn0oq")
+region = Rect2(0, 0, 223, 291)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvkg8"]
+atlas = ExtResource("9_nn0oq")
+region = Rect2(0, 582, 223, 291)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltl2d"]
+atlas = ExtResource("9_nn0oq")
+region = Rect2(0, 291, 223, 291)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_qvkg8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ox0q5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ox0q5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvkg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ox0q5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltl2d")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
@@ -454,16 +538,16 @@ shape = SubResource("CapsuleShape2D_kyqiw")
 position = Vector2(6, -6)
 scale = Vector2(0.4, 0.41)
 sprite_frames = SubResource("SpriteFrames_8td47")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.6865848
 
 [node name="egyptAnims" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(6.0000005, -9.999999)
 scale = Vector2(0.38518098, 0.3954038)
 sprite_frames = SubResource("SpriteFrames_k5has")
-animation = &"idle"
+animation = &"spear_throw"
+autoplay = "idle"
 
 [node name="AttackArea01" type="Area2D" parent="."]
 position = Vector2(14.999999, -27.999998)
@@ -485,9 +569,14 @@ position = Vector2(16.000002, -10.000001)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_ox0q5")
 animation = &"idle"
-frame_progress = 0.3326718
+autoplay = "idle"
 
 [node name="spaceAnims" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(7.9999995, -8)
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_qvkg8")
+animation = &"idle"
+autoplay = "walk"
 
 [connection signal="animation_finished" from="egyptAnims" to="." method="_on_egypt_anims_animation_finished"]
