@@ -27,8 +27,8 @@ signal health_change # Will need to be emitted when player takes damage  or heal
 
 
 
-const SPEED = 250.0
-const JUMP_VELOCITY = -250.0
+const SPEED = 400.0
+const JUMP_VELOCITY = -400.0
 
 var currentSprite = cavemanSprite
 var jumped = 0
@@ -156,8 +156,8 @@ func updateForm():
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyqiw"]
-radius = 64.0
-height = 168.0
+radius = 36.666664
+height = 100.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_io258"]
 atlas = ExtResource("3_2a4id")
@@ -295,6 +295,7 @@ scale = Vector2(0.5, 0.5)
 zoom = Vector2(1.5, 1.5)
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2(12, -2)
 scale = Vector2(1.2, 1.2)
 shape = SubResource("CapsuleShape2D_kyqiw")
 
