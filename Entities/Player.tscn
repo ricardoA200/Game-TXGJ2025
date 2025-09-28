@@ -285,27 +285,21 @@ animations = [{
 size = Vector2(107, 141)
 
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_mask = 9
 script = SubResource("GDScript_kyqiw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1, -2)
-scale = Vector2(0.3, 0.3)
-zoom = Vector2(1.2, 1.2)
+scale = Vector2(0.5, 0.5)
+zoom = Vector2(1.5, 1.5)
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
-scale = Vector2(1, 1.0105337)
+scale = Vector2(1.2, 1.2)
 shape = SubResource("CapsuleShape2D_kyqiw")
 
 [node name="spearSprite" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0.13750374, -0.26250434)
-scale = Vector2(0.45839226, 0.42880833)
-texture = ExtResource("1_rpqav")
 
-[node name="caveSprite" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-0.56252146, 5.000001)
-scale = Vector2(0.6984891, 0.794214)
 texture = ExtResource("2_1iada")
 
 [node name="CatWalk" type="AnimatedSprite2D" parent="."]
@@ -333,13 +327,14 @@ frame_progress = 0.13964522
 
 [node name="AttackArea01" type="Area2D" parent="."]
 position = Vector2(14.999999, -27.999998)
-scale = Vector2(5.034491, 10.845761)
+scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 4
 
 [node name="AttackHitBox" type="CollisionShape2D" parent="AttackArea01"]
 top_level = true
 position = Vector2(106, 0)
+scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_rpqav")
 disabled = true
 debug_color = Color(0.32317686, 0.5522869, 0.7861259, 0.41960785)

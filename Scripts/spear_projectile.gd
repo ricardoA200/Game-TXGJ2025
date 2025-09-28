@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var SPEED = 500
+@export var SPEED = 750
 @onready var sprite = $Sprite2D
 @onready var airHitbox = $AirHitBox
 @onready var stuckHitbox = $StuckHitBox
@@ -11,7 +11,7 @@ var spawnPos : Vector2
 var spawnRot : float
 var stuck := false
 var arc : float
-
+# comment 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
