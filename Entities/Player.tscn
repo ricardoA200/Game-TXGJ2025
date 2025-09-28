@@ -1,11 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://durf4fw0iv0bu"]
+[gd_scene load_steps=32 format=3 uid="uid://durf4fw0iv0bu"]
 
 [ext_resource type="Texture2D" uid="uid://bwbtqkpgb1yej" path="res://Assets/oogawalkNB.sprites/oogawalkNB.png" id="2_2a4id"]
+[ext_resource type="Texture2D" uid="uid://cub3rk1g0cclk" path="res://Assets/oogawalkNB.sprites/received_819653130734038-removebg-preview.png" id="2_w6hej"]
 [ext_resource type="Texture2D" uid="uid://c5crydb3862ln" path="res://Assets/egyptwalkNB/spear_throw/spear1-removebg-preview.png" id="3_io258"]
 [ext_resource type="Texture2D" uid="uid://bh5adf4p5kjji" path="res://Assets/egyptwalkNB/spear_throw/spear2-removebg-preview.png" id="4_w6hej"]
 [ext_resource type="Texture2D" uid="uid://sm2l7v667vo4" path="res://Assets/egyptwalkNB/egyptwalk.png" id="5_drum4"]
 [ext_resource type="Texture2D" uid="uid://1yv6v0n0nc87" path="res://Assets/egyptwalkNB/spear_throw/spear3-removebg-preview.png" id="5_nn0oq"]
 [ext_resource type="Texture2D" uid="uid://cp3pc2rjqe5p5" path="res://Assets/egyptwalkNB/spear_throw/spear4-removebg-preview.png" id="6_ry37w"]
+[ext_resource type="Texture2D" uid="uid://cy0j2mfiqvt8" path="res://Assets/knightwalkNB/knightwalkNB.png" id="8_nn0oq"]
 
 [sub_resource type="GDScript" id="GDScript_kyqiw"]
 resource_name = "Player "
@@ -76,13 +78,11 @@ func _process(delta):
 	handleInputs()
 	animationHandler()
 
-func attack():
-	if form == \"Caveman\":
-		currentSprite.play(\"attack\") ###Caveman animation
-		attackHitBox.disabled = false
-		await get_tree().create_timer(0.5).timeout
-		attackHitBox.disabled = true
-		isAttacking = false
+func attack(): # TO DO: Program Monster to take damage from attackHitBox 
+	attackHitBox.disabled = false
+	await get_tree().create_timer(0.5).timeout
+	attackHitBox.disabled = true
+	isAttacking = false
 	
 func throw():
 	spear_instance = spearProj.instantiate()
@@ -142,6 +142,7 @@ func handleInputs():
 			throwing = true
 			hasThrown = true
 		if form == \"Caveman\" and not isAttacking:
+			isAttacking = true
 			attack() #chat wanted isAttacking = true out that goes above attack()
 			
 	if Input.is_action_just_pressed(\"ability\"):
@@ -172,12 +173,15 @@ func animationHandler():
 		currentSprite.animation = \"spear_throw\"
 		currentSprite.play()
 		currentSprite.animation_finished.connect(endThrow)
-	if not throwing:
+	elif isAttacking:
+		currentSprite.animation = \"attack\"
+		currentSprite.play()
+	else:
 		if velocity.x != 0:
-			currentSprite.animation = \"walk_right\"
+			currentSprite.animation = \"walk\"
 			currentSprite.flip_h = (velocity.x < 0)
 		else:
-			currentSprite.animation = \"idle_right\"
+			currentSprite.animation = \"idle\"
 		currentSprite.play()
 		
 func endThrow():
@@ -206,6 +210,20 @@ animations = [{
 "texture": SubResource("AtlasTexture_2a4id")
 }, {
 "duration": 1.0,
+"texture": ExtResource("2_w6hej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_w6hej")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2a4id")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2a4id")
 }, {
 "duration": 1.0,
@@ -218,7 +236,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_drum4")
 }],
 "loop": true,
-"name": &"idle_right",
+"name": &"idle",
 "speed": 3.0
 }, {
 "frames": [{
@@ -232,7 +250,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_2a4id")
 }],
 "loop": true,
-"name": &"walk_right",
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -297,7 +315,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ph751")
 }],
 "loop": true,
-"name": &"idle_right",
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -337,12 +355,85 @@ animations = [{
 "texture": SubResource("AtlasTexture_h7dcw")
 }],
 "loop": true,
-"name": &"walk_right",
+"name": &"walk",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpqav"]
 size = Vector2(106.75, 95.25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ry37w"]
+atlas = ExtResource("8_nn0oq")
+region = Rect2(516, 0, 258, 293)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paumt"]
+atlas = ExtResource("8_nn0oq")
+region = Rect2(771, 0, 265, 293)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwl8m"]
+atlas = ExtResource("8_nn0oq")
+region = Rect2(0, 0, 258, 293)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8td47"]
+atlas = ExtResource("8_nn0oq")
+region = Rect2(1039, 0, 267, 293)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5has"]
+atlas = ExtResource("8_nn0oq")
+region = Rect2(1305, 0, 250, 293)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ox0q5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ry37w")
+}],
+"loop": true,
+"name": &"block",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paumt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paumt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paumt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paumt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwl8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwl8m")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paumt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwl8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8td47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5has")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qvkg8"]
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
@@ -363,17 +454,16 @@ shape = SubResource("CapsuleShape2D_kyqiw")
 position = Vector2(6, -6)
 scale = Vector2(0.4, 0.41)
 sprite_frames = SubResource("SpriteFrames_8td47")
-animation = &"idle_right"
-autoplay = "idle_right"
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.6865848
 
 [node name="egyptAnims" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(6.0000005, -9.999999)
 scale = Vector2(0.38518098, 0.3954038)
 sprite_frames = SubResource("SpriteFrames_k5has")
-animation = &"spear_throw"
-frame = 3
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="AttackArea01" type="Area2D" parent="."]
 position = Vector2(14.999999, -27.999998)
@@ -383,10 +473,21 @@ collision_mask = 4
 
 [node name="AttackHitBox" type="CollisionShape2D" parent="AttackArea01"]
 top_level = true
-position = Vector2(50.3125, -4.1875)
+position = Vector2(40, -6)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_rpqav")
 disabled = true
 debug_color = Color(0.32317686, 0.5522869, 0.7861259, 0.41960785)
+
+[node name="knightAnims" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(16.000002, -10.000001)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_ox0q5")
+animation = &"idle"
+frame_progress = 0.3326718
+
+[node name="spaceAnims" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qvkg8")
 
 [connection signal="animation_finished" from="egyptAnims" to="." method="_on_egypt_anims_animation_finished"]
