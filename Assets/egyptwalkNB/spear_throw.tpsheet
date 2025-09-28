@@ -1,0 +1,78 @@
+{
+	"textures": [
+		{
+			"image": "spear_throw.png",
+			"size": {
+				"w": 745,
+				"h": 612
+			},
+			"sprites": [
+				{
+					"filename": "spear1-removebg-preview.png",
+					"region": {
+						"x": 1,
+						"y": 1,
+						"w": 315,
+						"h": 310
+					},
+					"margin": {
+						"x": 17,
+						"y": 147,
+						"w": 185,
+						"h": 190
+					}
+				},
+				{
+					"filename": "spear4-removebg-preview.png",
+					"region": {
+						"x": 1,
+						"y": 313,
+						"w": 451,
+						"h": 287
+					},
+					"margin": {
+						"x": 22,
+						"y": 145,
+						"w": 49,
+						"h": 213
+					}
+				},
+				{
+					"filename": "spear3-removebg-preview.png",
+					"region": {
+						"x": 318,
+						"y": 1,
+						"w": 362,
+						"h": 287
+					},
+					"margin": {
+						"x": 21,
+						"y": 145,
+						"w": 138,
+						"h": 213
+					}
+				},
+				{
+					"filename": "spear2-removebg-preview.png",
+					"region": {
+						"x": 454,
+						"y": 290,
+						"w": 290,
+						"h": 321
+					},
+					"margin": {
+						"x": 16,
+						"y": 146,
+						"w": 210,
+						"h": 179
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:a95043cc602b54b7c0208fceab39f8b3:8f2bdd8d1cfb638b0f0b3d423a0ff41e:4f4d527d6bf6273304ec731f068038c8$"
+	}
+}
