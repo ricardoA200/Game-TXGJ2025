@@ -309,19 +309,19 @@ scale = Vector2(0.6984891, 0.794214)
 texture = ExtResource("2_1iada")
 
 [node name="CatWalk" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(1.9073486e-06, 4.500002)
 scale = Vector2(0.5915493, 0.628866)
 sprite_frames = SubResource("SpriteFrames_cfvty")
 autoplay = "default"
-frame_progress = 0.43486476
+frame_progress = 0.9492314
 
 [node name="OogaWalk" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(2.0000002, 9)
 scale = Vector2(0.6210046, 0.6360544)
 sprite_frames = SubResource("SpriteFrames_8td47")
 autoplay = "default"
-frame_progress = 0.07832222
+frame_progress = 0.5926923
 
 [node name="EgyptWalk" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -329,7 +329,7 @@ position = Vector2(1, 4)
 scale = Vector2(0.597285, 0.6357388)
 sprite_frames = SubResource("SpriteFrames_k5has")
 autoplay = "default"
-frame_progress = 0.62528056
+frame_progress = 0.13964522
 
 [node name="AttackArea01" type="Area2D" parent="."]
 position = Vector2(14.999999, -27.999998)
