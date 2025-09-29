@@ -20,3 +20,14 @@ func _on_lava_body_entered(body):
 		print("awwww it burns")
 	print("lava entered")
 	pass # Replace with function body.
+
+func _on_door_body_entered(body):
+	if body == player:
+		get_tree().change_scene_to_file("res://Scenes/boss_room.tscn")
+		print("made it")
+	pass # Replace with function body.
+
+
+func _on_audio_stream_player_finished():
+	$AudioStreamPlayer.play()
+	pass # Replace with function body.

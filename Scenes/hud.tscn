@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dk36sjly6c5pp"]
 
 [ext_resource type="Script" uid="uid://d2ggvosac33tn" path="res://Scripts/hud.gd" id="1_bjfho"]
-[ext_resource type="Texture2D" uid="uid://dcp6gm36hngay" path="res://Assets/HealthBars.png" id="1_fccik"]
-[ext_resource type="Texture2D" uid="uid://b7uhea6752h8k" path="res://Assets/HPOuter.png" id="2_bjfho"]
+[ext_resource type="Texture2D" uid="uid://c8u7ai7lba1nb" path="res://Assets/HealthBars.png" id="1_fccik"]
+[ext_resource type="Texture2D" uid="uid://cdtfa7ovcot7v" path="res://Assets/HPOuter.png" id="2_bjfho"]
 [ext_resource type="Texture2D" uid="uid://c5etyhq545xn4" path="res://Assets/dashCooldown.png" id="4_6fbih"]
 [ext_resource type="Texture2D" uid="uid://daqmkdyao2m5s" path="res://Assets/spearIcon.png" id="5_t1xeu"]
 [ext_resource type="Texture2D" uid="uid://dcimyqrxj52ro" path="res://Assets/spearIconEmpty.png" id="6_36asn"]
@@ -16,7 +16,7 @@ offset_top = 10.0
 offset_right = 56.0
 offset_bottom = 50.0
 scale = Vector2(5, 5)
-value = 40.0
+value = 100.0
 texture_over = ExtResource("2_bjfho")
 texture_progress = ExtResource("1_fccik")
 
