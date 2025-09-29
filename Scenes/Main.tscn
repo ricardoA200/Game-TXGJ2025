@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://huqpiar2ase3"]
 
 [ext_resource type="Script" uid="uid://bka5ifkj0bflp" path="res://Scripts/main.gd" id="1_rvslj"]
-[ext_resource type="Texture2D" uid="uid://dbe0af4nuj8fu" path="res://Assets/Default.png" id="2_rarhs"]
-[ext_resource type="Texture2D" uid="uid://cqs887m4ihs2i" path="res://Assets/Hover.png" id="3_vcsgt"]
+[ext_resource type="Texture2D" uid="uid://dhcn7ma1lkcbm" path="res://Assets/Default.png" id="2_rarhs"]
+[ext_resource type="Texture2D" uid="uid://b8twxtjp3on2s" path="res://Assets/Hover.png" id="3_vcsgt"]
 [ext_resource type="Script" uid="uid://me3otihc00t1" path="res://Scripts/texture_button.gd" id="4_c01mt"]
 
 [node name="Node2D" type="Node2D"]
@@ -20,10 +20,10 @@ color = Color(0.0885599, 0.0885599, 0.0885599, 1)
 position = Vector2(581, 337)
 
 [node name="TextureButton" type="TextureButton" parent="."]
-offset_left = 372.00003
-offset_top = 237.0
-offset_right = 540.0
-offset_bottom = 325.0
+offset_left = 422.00003
+offset_top = 241.00002
+offset_right = 590.0
+offset_bottom = 329.0
 scale = Vector2(2.0360932, 2.2360759)
 texture_normal = ExtResource("2_rarhs")
 texture_hover = ExtResource("3_vcsgt")

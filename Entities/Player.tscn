@@ -45,6 +45,7 @@ var hasThrown = false
 var throwing = false
 var dashReady = true
 var dashSpeed := 1
+var last_safe_position : Vector2
 var form := \"Caveman\"
 
 
@@ -52,9 +53,6 @@ func _ready():
 	reset()
 var can_take_damage: bool = true
 var spear_instance : Node = null
-
-
-
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -65,6 +63,7 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 		jumped += 1
 	elif is_on_floor():
+		last_safe_position = position
 		jumped = 0
 	
 	# Get the input direction and handle the movement/deceleration.
@@ -210,9 +209,13 @@ func updateForm():
 		knightSprite.visible = false
 		spaceSprite.visible = true
 		spearmanSprite.visible = false
-		
 
-	
+func reset_position():
+	if last_safe_position != Vector2.ZERO:
+		global_position = last_safe_position
+	else:
+		global_position = Vector2(100, 100) # some safe default spawn point
+	velocity = Vector2.ZERO
 
 func animationHandler():
 	if throwing:
