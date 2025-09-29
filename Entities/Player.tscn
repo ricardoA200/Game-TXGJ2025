@@ -156,11 +156,11 @@ func handleInputs():
 		if form == \"Caveman\":
 			form = \"Spearman\"
 		elif form == \"Spearman\":
+			form = \"Knight\"
+		elif form == \"Knight\":
+			form = \"Spaceman\"
+		elif form == \"Spaceman\":
 			form = \"Caveman\"
-		#elif form == \"Knight\":
-		#	form = \"Spaceman\"
-		#elif form == \"Spaceman\":
-		#	form = \"Caveman\"
 		updateForm()
 
 	if Input.is_action_just_pressed(\"attack\"):
