@@ -1,23 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://huqpiar2ase3"]
+[gd_scene load_steps=5 format=3 uid="uid://huqpiar2ase3"]
 
-[ext_resource type="Script" uid="uid://k6hi1dt6fsbk" path="res://Scripts/playButton.gd" id="1_r150o"]
-[ext_resource type="Script" uid="uid://0f8x6oe1dj14" path="res://Scripts/main.gd" id="1_rvslj"]
+[ext_resource type="Script" uid="uid://bka5ifkj0bflp" path="res://Scripts/main.gd" id="1_rvslj"]
+[ext_resource type="Texture2D" uid="uid://dhcn7ma1lkcbm" path="res://Assets/Default.png" id="2_rarhs"]
+[ext_resource type="Texture2D" uid="uid://b8twxtjp3on2s" path="res://Assets/Hover.png" id="3_vcsgt"]
+[ext_resource type="Script" uid="uid://me3otihc00t1" path="res://Scripts/texture_button.gd" id="4_c01mt"]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(-11, 0)
 script = ExtResource("1_rvslj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 1769.0
-offset_top = 66.0
-offset_right = 2941.0
-offset_bottom = 737.0
+offset_left = -8.0
+offset_top = -10.0
+offset_right = 1164.0
+offset_bottom = 661.0
+color = Color(0.0885599, 0.0885599, 0.0885599, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(2347, 402)
+position = Vector2(581, 337)
 
-[node name="Button" type="Button" parent="."]
-offset_left = 2128.0
-offset_top = 259.0
-offset_right = 2578.0
-offset_bottom = 533.0
-script = ExtResource("1_r150o")
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 422.00003
+offset_top = 241.00002
+offset_right = 590.0
+offset_bottom = 329.0
+scale = Vector2(2.0360932, 2.2360759)
+texture_normal = ExtResource("2_rarhs")
+texture_hover = ExtResource("3_vcsgt")
+script = ExtResource("4_c01mt")

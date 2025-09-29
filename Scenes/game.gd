@@ -13,10 +13,25 @@ func _ready():
 func _process(delta):
 	pass
 
-
 func _on_lava_body_entered(body):
 	if body == player:
-		player.take_damage(100)
-		print("awwww it burns")
-	print("lava entered")
+		player.reset_position()
 	pass # Replace with function body.
+
+func _on_door_body_entered(body):
+	if body == player:
+		get_tree().change_scene_to_file("res://Scenes/boss_room.tscn")
+		
+	
+
+
+func _on_audio_stream_player_finished():
+	$AudioStreamPlayer.play()
+	
+
+
+func _on_boundary_body_entered(body):
+	if body == player:
+		player.reset_position()
+		
+	
